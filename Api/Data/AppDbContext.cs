@@ -34,6 +34,10 @@ public class AppDbContext : DbContext
             .WithMany()
             .HasForeignKey(r => r.VeiculoId)
             .OnDelete(DeleteBehavior.Cascade); // Delete em cascata. 
+
+        modelBuilder.Entity<Usuario>()
+            .Property(u => u.Role)
+            .HasConversion<string>();
     }
     
 }
