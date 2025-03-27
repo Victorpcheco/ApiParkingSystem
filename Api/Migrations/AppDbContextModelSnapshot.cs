@@ -98,7 +98,7 @@ namespace Api.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Matricula")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -106,8 +106,9 @@ namespace Api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Senha")
                         .IsRequired()

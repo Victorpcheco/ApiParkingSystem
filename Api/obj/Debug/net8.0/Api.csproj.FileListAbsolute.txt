@@ -110,3 +110,13 @@ C:\Projects\dotnet\ApiParkingSystem\Api\Api\obj\Debug\net8.0\refint\Api.dll
 C:\Projects\dotnet\ApiParkingSystem\Api\Api\obj\Debug\net8.0\Api.pdb
 C:\Projects\dotnet\ApiParkingSystem\Api\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 C:\Projects\dotnet\ApiParkingSystem\Api\Api\obj\Debug\net8.0\ref\Api.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Projects\dotnet\ApiParkingSystem\Api\Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
