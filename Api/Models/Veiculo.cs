@@ -13,8 +13,8 @@ public class Veiculo
     public string Modelo { get; set; }
     [Required]
     public string Placa { get; set; }
-    [Required]
-    public int ClienteId { get; set; }
+
+    public int? ClienteId { get; set; }
     
     [ForeignKey("ClienteId")]
     public Cliente Cliente { get; set; }
