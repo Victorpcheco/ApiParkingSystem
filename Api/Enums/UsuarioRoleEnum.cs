@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace Api.Enums;
 
 
-    [JsonConverter(typeof(JsonStringEnumConverter))] // Adicione esta anotação
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum UsuarioRoleEnum
     {
         Admin,

@@ -28,7 +28,7 @@ public class AuthController : Controller
         }
         catch (Exception ex)
         {
-            return Unauthorized(new { Message = ex.Message });
+            return BadRequest(new { Message = ex.Message });
         }
     }
     

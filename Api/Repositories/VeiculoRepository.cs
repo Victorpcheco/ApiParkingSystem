@@ -27,7 +27,28 @@ public class VeiculoRepository :  IVeiculosRepository
         return await _context.Tb_veiculos
             .FirstOrDefaultAsync(v => v.Placa == placa);
     }
-    
-    
+
+    public async Task<Veiculo> GetVeiculoById(int id)
+    {
+        return await _context.Tb_veiculos.FindAsync(id);
+        
+    }
+
+    public async Task<IEnumerable<Veiculo>> GetVeiculosAsync()
+    {
+        return await _context.Tb_veiculos.ToListAsync();
+    }
+
+    public async Task UpdateVeiculoAsync(Veiculo veiculo)
+    {
+         _context.Tb_veiculos.Update(veiculo);
+         await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteVeiculoAsync(Veiculo veiculo)
+    {
+        _context.Tb_veiculos.Remove(veiculo);
+        await _context.SaveChangesAsync();
+    }
     
 }

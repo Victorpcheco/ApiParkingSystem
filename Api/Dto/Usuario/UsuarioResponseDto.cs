@@ -9,4 +9,5 @@ public class UsuarioResponseDto
     public string Matricula { get; set; }
     public UsuarioRoleEnum Role { get; set; }
     public bool Ativo { get; set; }
+    
 }
