@@ -15,9 +15,9 @@ public class VeiculoService : IVeiculoService
         _veiculosRepository = veiculosRepository;
     }
 
-    public async Task<CreateVeiculoDto> CreateVeiculoAsync(CreateVeiculoDto createVeiculoDto)
+    public async Task<CreatedVeiculoDto> CreateVeiculoAsync(CreateVeiculoDto dto)
     {
-        var existingCar = await _veiculosRepository.GetByPlacaAsync(createVeiculoDto.Placa);
+        var existingCar = await _veiculosRepository.GetByPlacaAsync(dto.Placa);
         if (existingCar != null)
         {
             throw new Exception("Carro já cadastrado no sistema!");
@@ -25,21 +25,74 @@ public class VeiculoService : IVeiculoService
 
         var veiculo = new Veiculo()
         {
-            Marca = createVeiculoDto.Marca,
-            Modelo = createVeiculoDto.Modelo,
-            Placa = createVeiculoDto.Placa
+            Modelo = dto.Modelo,
+            Placa = dto.Placa
         };
 
         await _veiculosRepository.AddVeiculoAsync(veiculo);
 
-        return new CreateVeiculoDto()
+        return new CreatedVeiculoDto()
         {
-            Marca = veiculo.Marca,
-            Modelo = veiculo.Modelo,
-            Placa = veiculo.Placa
+            Placa = veiculo.Placa,
+            Id = veiculo.Id,
+            DataCadastro = veiculo.DataCadastro,
         }; 
 
     }
-    
-    
+
+    public async Task<CreateVeiculoDto> GetVeiculoByIdAsync(int id)
+    {
+        var veiculo = await _veiculosRepository.GetVeiculoById(id);
+        if (veiculo == null)
+        {
+            throw new Exception("Veiculo não encontrado!");
+        }
+        return new CreateVeiculoDto()
+        {
+            Id = veiculo.Id,
+            Placa = veiculo.Placa,
+            Modelo = veiculo.Modelo,
+            ClientId = veiculo.ClienteId,
+            DataCadastro = veiculo.DataCadastro
+        };
+
+    }
+
+    public async Task<IEnumerable<Veiculo>> GetVeiculosAsync()
+    {
+        var veiculos = await _veiculosRepository.GetVeiculosAsync();
+        if (veiculos == null)
+        {
+            throw new Exception("Nenhum veículo cadastrado!");
+        }
+        return veiculos;
+    }
+
+
+    public async Task<bool> UpdateVeiculoAsync(int id, CreateVeiculoDto dto)
+    {
+        var existingVeiculo = await _veiculosRepository.GetVeiculoById(id);
+        if (existingVeiculo == null)
+        {
+            throw new Exception("Veículo não cadastrado!");
+        }
+        
+        existingVeiculo.Placa = dto.Placa;
+        existingVeiculo.Modelo = dto.Modelo;
+        
+        await _veiculosRepository.UpdateVeiculoAsync(existingVeiculo);
+        return true;
+    }
+
+    public async Task<bool> DeleteVeiculoAsync(int id)
+    {
+        var existingVeiculo = await _veiculosRepository.GetVeiculoById(id);
+        if (existingVeiculo == null)
+        {
+            throw new Exception("Veículo não cadastrado!");
+        }
+        
+        await _veiculosRepository.DeleteVeiculoAsync(existingVeiculo);
+        return true;
+    }
 }

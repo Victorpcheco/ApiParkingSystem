@@ -19,4 +19,6 @@ public class Veiculo
     [ForeignKey("ClienteId")]
     public Cliente Cliente { get; set; }
     
+    public DateTime? DataCadastro { get; set; } =  DateTime.Now;
+    
 }
