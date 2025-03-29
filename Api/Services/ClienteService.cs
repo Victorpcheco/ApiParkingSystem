@@ -39,5 +39,40 @@ public class ClienteService : IClienteService
             DataCadastro = DateTime.Now
         };
     }
-    
+
+
+    public async Task<IEnumerable<Cliente>> GetAllClientesAsync()
+    {
+        return await _repository.GetAllClientesAsync();
+    }
+
+    public async Task<bool> UpdateClienteAsync(int id, CreateClienteDto dto)
+    {
+        var existingCliente = await _repository.GetByIdAsync(id);
+        if (existingCliente == null)
+        {
+            throw new Exception("Cliente não cadastrado!");
+        }
+        
+        existingCliente.Nome = dto.Nome;
+        existingCliente.Cpf = dto.Cpf;
+        existingCliente.Telefone = dto.Telefone;
+        existingCliente.Tipo = dto.Tipo;
+        
+        await _repository.UpdateClienteAsync(existingCliente);
+        return true;
+    }
+
+
+    public async Task<bool> DeleteClienteAsync(int id)
+    {
+        var existingCliente = await _repository.GetByIdAsync(id);
+        if (existingCliente == null)
+        {
+            throw new Exception("Cliente não cadastrado!");
+        }
+        
+        await _repository.DeleteClienteAsync(id);
+        return true;
+    }
 }
