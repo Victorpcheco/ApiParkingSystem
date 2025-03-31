@@ -13,7 +13,6 @@ public class AppDbContext : DbContext
     public DbSet<Cliente> Tb_clientes { get; set; }
     public DbSet<Registro> Tb_registros { get; set; }
     public DbSet<Usuario> Tb_usuarios { get; set; }
-    public DbSet<Vaga> Tb_vagas { get; set; }
     public DbSet<Veiculo> Tb_veiculos { get; set; }
 
 

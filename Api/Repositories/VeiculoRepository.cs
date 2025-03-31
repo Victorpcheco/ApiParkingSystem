@@ -8,7 +8,6 @@ namespace Api.Repository;
 public class VeiculoRepository :  IVeiculosRepository
 {
     private readonly AppDbContext _context;
-
     public VeiculoRepository(AppDbContext context)
     {
         _context = context;

@@ -15,5 +15,5 @@ public class Cliente
     public string Telefone { get; set; }
     [Required]
     public ClienteTipoEnum Tipo { get; set; } // Avulso ou Mensalista
-    public DateTime? DataCadastro { get; set; } =  DateTime.Now;
+    public DateTime? DataCadastro { get; set; } =  DateTime.UtcNow;
 }

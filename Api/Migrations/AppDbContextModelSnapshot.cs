@@ -64,21 +64,11 @@ namespace Api.Migrations
                     b.Property<DateTime>("DataEntrada")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DataSaida")
+                    b.Property<DateTime?>("DataSaida")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("TempoPermanencia")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int");
-
-                    b.Property<int>("VagaId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("ValorTotal")
-                        .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("VeiculoId")
                         .HasColumnType("int");
@@ -86,8 +76,6 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VagaId");
 
                     b.HasIndex("VeiculoId");
 
@@ -124,29 +112,6 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tb_usuarios");
-                });
-
-            modelBuilder.Entity("Api.Models.Vaga", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("IdentificacaoVaga")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("Ocupado")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("Tipo")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tb_vagas");
                 });
 
             modelBuilder.Entity("Api.Models.Veiculo", b =>
@@ -190,12 +155,6 @@ namespace Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Api.Models.Vaga", "Vaga")
-                        .WithMany()
-                        .HasForeignKey("VagaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Api.Models.Veiculo", "Veiculo")
                         .WithMany()
                         .HasForeignKey("VeiculoId")
@@ -203,8 +162,6 @@ namespace Api.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
-
-                    b.Navigation("Vaga");
 
                     b.Navigation("Veiculo");
                 });
