@@ -67,17 +67,19 @@ namespace Api.Migrations
                     b.Property<DateTime?>("DataSaida")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
+                    b.Property<string>("PlacaVeiculo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("VeiculoId")
+                    b.Property<TimeSpan>("TempoDePermanencia")
+                        .HasColumnType("time(6)");
+
+                    b.Property<int>("UsuarioId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VeiculoId");
 
                     b.ToTable("Tb_registros");
                 });
@@ -155,15 +157,7 @@ namespace Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Api.Models.Veiculo", "Veiculo")
-                        .WithMany()
-                        .HasForeignKey("VeiculoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Usuario");
-
-                    b.Navigation("Veiculo");
                 });
 
             modelBuilder.Entity("Api.Models.Veiculo", b =>

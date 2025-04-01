@@ -10,7 +10,7 @@ public class Registro
     public int Id { get; set; }
     
     [Required]
-    public int VeiculoId { get; set; }
+    public string PlacaVeiculo { get; set; }
     
     [Required] 
     public int UsuarioId { get; set; }
@@ -18,14 +18,9 @@ public class Registro
     [Required]
     public DateTime DataEntrada { get; set; } = DateTime.UtcNow;
     
-    public DateTime? DataSaida { get; set; } 
-    
-    [NotMapped] // Não será persistido no banco
-    public TimeSpan? TempoPermanencia => 
-        DataSaida.HasValue ? DataSaida - DataEntrada : null;
-    
-    [ForeignKey("VeiculoId")]
-    public Veiculo Veiculo { get; set; }
+    public DateTime? DataSaida { get; set; }
+
+    public TimeSpan TempoDePermanencia { get; set; }
     
     [ForeignKey("UsuarioId")]
     public Usuario Usuario { get; set; }

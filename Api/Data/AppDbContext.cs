@@ -26,13 +26,6 @@ public class AppDbContext : DbContext
             .WithMany()
             .HasForeignKey(v => v.ClienteId)
             .OnDelete(DeleteBehavior.Restrict); // Impede a exclusão caso o Veiculo esteja associado ao Cliente. 
-        
-        
-        modelBuilder.Entity<Registro>()
-            .HasOne(r => r.Veiculo)
-            .WithMany()
-            .HasForeignKey(r => r.VeiculoId)
-            .OnDelete(DeleteBehavior.Cascade); // Delete em cascata. 
 
         modelBuilder.Entity<Usuario>()
             .Property(u => u.Role)

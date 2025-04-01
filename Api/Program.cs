@@ -49,6 +49,10 @@ builder.Services.AddScoped<IVeiculosRepository, VeiculoRepository>();
 builder.Services.AddScoped<IVeiculoService, VeiculoService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IRegistroRepository, RegistroRepository>();
+builder.Services.AddScoped<IRegistroService, RegistroService>();
+
+
 
 // Add DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
